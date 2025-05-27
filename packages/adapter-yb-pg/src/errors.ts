@@ -1,5 +1,5 @@
 import { Error as DriverAdapterErrorObject } from '@prisma/driver-adapter-utils'
-import type { DatabaseError } from 'pg'
+import type { DatabaseError } from '@yugabytedb/pg'
 
 export function convertDriverError(error: any): DriverAdapterErrorObject {
   if (!isDbError(error)) {
@@ -106,3 +106,4 @@ function isDbError(error: any): error is DatabaseError {
     (typeof error.hint === 'string' || error.hint === undefined)
   )
 }
+
