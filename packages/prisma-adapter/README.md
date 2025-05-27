@@ -1,4 +1,4 @@
-# @yugabytedb/adapter-yb-pg
+# @yugabytedb/prisma-adapter
 
 This package contains the driver adapter for Prisma ORM that enables usage of the YugabyteDB node-postgres (`@yugaytedb/pg`) smart database driver for YugabyteDB.
 
@@ -8,7 +8,7 @@ This package contains the driver adapter for Prisma ORM that enables usage of th
 
 ## Usage
 
-This section explains how you can use it with Prisma ORM and the `@yugabytedb/adapter-yb-pg` driver adapter. Be sure that the `DATABASE_URL` environment variable is set to your PostgreSQL connection string (e.g. in a `.env` file).
+This section explains how you can use it with Prisma ORM and the `@yugabytedb/prisma-adapter` driver adapter. Be sure that the `DATABASE_URL` environment variable is set to your PostgreSQL connection string (e.g. in a `.env` file).
 
 Example DATABASE_URL: `postgresql://yugabyte:yugabyte@127.0.0.1:5433/yugabyte?ybServersRefreshInterval=10&loadBalance=true&schema=public`
 
@@ -41,7 +41,7 @@ Next, install the `@yugabytedb/pg` package and Prisma ORM's driver adapter:
 
 ```
 npm install @yugabytedb/pg
-npm install path/to/yugabytedb-adapter-yb-pg-6.8.2-yb-1.tgz
+npm install @yugabytedb/prisma-adapter
 ```
 > **Note:**: Need to install @yugabytedb/pg version 8.7.3-yb-10 or later.
 
@@ -50,7 +50,7 @@ npm install path/to/yugabytedb-adapter-yb-pg-6.8.2-yb-1.tgz
 Finally, when you instantiate Prisma Client, you need to pass an instance of Prisma ORM's driver adapter to the `PrismaClient` constructor:
 
 ```ts
-import { PrismaPg } from '@yugabytedb/adapter-yb-pg'
+import { PrismaPg } from '@yugabytedb/prisma-adapter'
 import { PrismaClient } from '@prisma/client'
 
 const connectionString = `${process.env.DATABASE_URL}`

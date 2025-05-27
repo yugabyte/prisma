@@ -1,5 +1,5 @@
 {
-  "name": "@yugabytedb/adapter-yb-pg",
+  "name": "@yugabytedb/prisma-adapter",
   "version": "6.8.2-yb-1",
   "description": "Prisma's driver adapter for \"@yugabytedb/pg\"",
   "main": "dist/index.js",
@@ -20,7 +20,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/yugabyte/prisma",
-    "directory": "packages/adapter-yb-pg"
+    "directory": "packages/prisma-adapter"
   },
   "scripts": {
     "dev": "DEV=true tsx helpers/build.ts",
