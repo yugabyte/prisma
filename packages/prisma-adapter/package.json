@@ -1,0 +1,54 @@
+{
+  "name": "@yugabytedb/prisma-adapter",
+  "version": "6.8.2-yb-1",
+  "description": "Prisma's driver adapter for \"@yugabytedb/pg\"",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yugabyte/prisma",
+    "directory": "packages/prisma-adapter"
+  },
+  "scripts": {
+    "dev": "DEV=true tsx helpers/build.ts",
+    "build": "tsx helpers/build.ts",
+    "test": "jest"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [],
+  "author": "Tom Houlé <houle@prisma.io>",
+  "contributors": "Harsh Daryani <hdaryani@yugabyte.com>",
+  "license": "Apache-2.0",
+  "sideEffects": false,
+  "dependencies": {
+    "@prisma/driver-adapter-utils": "6.8.2",
+    "postgres-array": "3.0.4"
+  },
+  "devDependencies": {
+    "@swc/core": "1.11.5",
+    "@swc/jest": "0.2.37",
+    "@types/pg": "8.11.11",
+    "@yugabytedb/pg": "8.7.3-yb-10",
+    "jest": "29.7.0",
+    "jest-junit": "16.0.0"
+  },
+  "peerDependencies": {
+    "@yugabytedb/pg": "^8.7.3-yb-10"
+  }
+}
