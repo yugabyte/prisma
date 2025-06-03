@@ -1,6 +1,6 @@
 {
   "name": "@yugabytedb/prisma-adapter",
-  "version": "6.8.2-yb-1",
+  "version": "6.8.2-yb-2",
   "description": "Prisma's driver adapter for \"@yugabytedb/pg\"",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
