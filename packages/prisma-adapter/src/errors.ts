@@ -1,5 +1,5 @@
 import { Error as DriverAdapterErrorObject, MappedError } from '@prisma/driver-adapter-utils'
-import type { DatabaseError } from 'pg'
+import type { DatabaseError } from '@yugabytedb/pg'
 
 const TLS_ERRORS = new Set([
   'UNABLE_TO_GET_ISSUER_CERT',

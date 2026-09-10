@@ -1,6 +1,6 @@
 import { getLogs } from '@prisma/debug'
 import type { SqlQuery } from '@prisma/driver-adapter-utils'
-import pg, { DatabaseError } from 'pg'
+import pg, { DatabaseError } from '@yugabytedb/pg'
 import { describe, expect, it, vi } from 'vitest'
 
 import { PrismaPgAdapterFactory } from '../pg'

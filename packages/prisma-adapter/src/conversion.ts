@@ -1,5 +1,5 @@
 import { ArgType, type ColumnType, ColumnTypeEnum } from '@prisma/driver-adapter-utils'
-import pg from 'pg'
+import pg from '@yugabytedb/pg'
 import { parse as parseArray } from 'postgres-array'
 
 import { FIRST_NORMAL_OBJECT_ID } from './constants'

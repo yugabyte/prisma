@@ -1,7 +1,7 @@
 {
-  "name": "@prisma/adapter-pg",
-  "version": "0.0.0",
-  "description": "Prisma's driver adapter for \"pg\"",
+  "name": "@yugabytedb/prisma-adapter",
+  "version": "7.8.0-yb-1",
+  "description": "Prisma ORM driver adapter for the \"@yugabytedb/pg\" YugabyteDB smart driver",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -19,8 +19,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/prisma/prisma.git",
-    "directory": "packages/adapter-pg"
+    "url": "https://github.com/yugabyte/prisma",
+    "directory": "packages/prisma-adapter"
   },
   "scripts": {
     "dev": "DEV=true tsx helpers/build.ts",
@@ -33,15 +33,18 @@
   ],
   "keywords": [],
   "author": "Tom Houlé <houle@prisma.io>",
+  "contributors": "Harsh Daryani <hdaryani@yugabyte.com>",
   "license": "Apache-2.0",
   "sideEffects": false,
   "dependencies": {
-    "@prisma/driver-adapter-utils": "workspace:*",
-    "pg": "^8.16.3",
-    "postgres-array": "3.0.4",
-    "@types/pg": "^8.16.0"
+    "@prisma/driver-adapter-utils": "7.8.0",
+    "postgres-array": "3.0.4"
+  },
+  "peerDependencies": {
+    "@yugabytedb/pg": "^8.7.3-yb-11"
   },
   "devDependencies": {
-    "@prisma/debug": "workspace:*"
+    "@prisma/debug": "workspace:*",
+    "@yugabytedb/pg": "^8.7.3-yb-11"
   }
 }
