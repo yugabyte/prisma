@@ -23,8 +23,8 @@
     "directory": "packages/prisma-adapter"
   },
   "scripts": {
-    "dev": "DEV=true tsx helpers/build.ts",
-    "build": "tsx helpers/build.ts",
+    "dev": "DEV=true tsx helpers/build.ts && tsx helpers/postbuild.ts",
+    "build": "tsx helpers/build.ts && tsx helpers/postbuild.ts",
     "test": "vitest run"
   },
   "files": [
@@ -38,13 +38,14 @@
   "sideEffects": false,
   "dependencies": {
     "@prisma/driver-adapter-utils": "7.8.0",
+    "@types/pg": "^8.16.0",
     "postgres-array": "3.0.4"
   },
   "peerDependencies": {
     "@yugabytedb/pg": "^8.7.3-yb-11"
   },
   "devDependencies": {
-    "@prisma/debug": "workspace:*",
+    "@prisma/debug": "7.8.0",
     "@yugabytedb/pg": "^8.7.3-yb-11"
   }
 }

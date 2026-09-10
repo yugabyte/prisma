@@ -435,9 +435,15 @@ export function mapArg<A>(arg: A | Date, argType: ArgType): null | unknown[] | s
     return Buffer.from(arg, 'base64')
   }
 
-  // https://github.com/brianc/node-postgres/pull/2930
+  // YB deviation from @prisma/adapter-pg: upstream returns a `Uint8Array` here, relying on
+  // node-postgres/pull/2930 (released in pg 8.9.0) to serialize typed-array elements inside array
+  // parameters. `@yugabytedb/pg` is based on node-postgres 8.7.3, whose `arrayString()` predates
+  // that fix and throws `TypeError: elementRepresentation.replace is not a function` for a `Bytes[]`
+  // parameter. A `Buffer` is handled correctly by both the 8.7.3 base and current node-postgres, and
+  // is itself a `Uint8Array`, so this stays within the upstream return type.
+  // Remove once `@yugabytedb/pg` is rebased onto pg >= 8.9.0.
   if (ArrayBuffer.isView(arg)) {
-    return new Uint8Array(arg.buffer, arg.byteOffset, arg.byteLength)
+    return Buffer.from(arg.buffer, arg.byteOffset, arg.byteLength)
   }
 
   return arg

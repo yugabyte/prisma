@@ -83,6 +83,21 @@ const adapter = new PrismaPg(pool, { disposeExternalPool: true })
 | `userDefinedTypeParser`  | Parser for user-defined types, called with the type OID, the value, and a queryable             |
 | `statementNameGenerator` | Generates prepared-statement names; omit to leave statement caching off                         |
 
+## Differences from `@prisma/adapter-pg` 7.8.0
+
+The adapter is a copy of upstream `@prisma/adapter-pg` with the driver import pointed at
+`@yugabytedb/pg`, plus:
+
+- **`Bytes[]` parameters are passed as `Buffer`s.** `@yugabytedb/pg` is based on node-postgres 8.7.3,
+  which predates [node-postgres#2930](https://github.com/brianc/node-postgres/pull/2930) and cannot
+  serialize non-`Buffer` typed-array elements inside array parameters. Removed once the smart driver
+  is rebased onto pg >= 8.9.0.
+- **SQLSTATE `40P01` (`deadlock_detected`) maps to `P2034`**, alongside `40001`. Backported from
+  upstream 7.10.0; YugabyteDB reports both serialization conflicts and deadlocks under contention,
+  and both should be retryable.
+- **Type declarations for `@yugabytedb/pg`** are shipped with the package, since the driver itself
+  ships none.
+
 ## Feedback
 
 Please open an issue at https://github.com/yugabyte/prisma if you find something missing or run into

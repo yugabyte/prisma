@@ -1,0 +1,6 @@
+# `@yugabytedb/pg` registers a winston File transport at require time, so loading the driver (e.g.
+# when running the tests) creates an `app.log` in the current working directory.
+app.log
+
+# npm pack output
+*.tgz

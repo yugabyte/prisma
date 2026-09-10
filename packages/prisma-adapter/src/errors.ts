@@ -127,7 +127,11 @@ function mapDriverError(error: DatabaseError): MappedError {
         kind: 'AuthenticationFailed',
         user: error.message.split(' ').pop()?.split('"').at(1),
       }
+    // `40P01` (deadlock_detected) is backported from @prisma/adapter-pg 7.10.0. YugabyteDB surfaces
+    // both serialization conflicts (40001) and deadlocks (40P01) under transaction contention, so
+    // both need to map to P2034 for client-side transaction retries to work.
     case '40001':
+    case '40P01':
       return {
         kind: 'TransactionWriteConflict',
       }
